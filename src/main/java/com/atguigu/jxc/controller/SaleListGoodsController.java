@@ -1,5 +1,6 @@
 package com.atguigu.jxc.controller;
 
+import com.atguigu.jxc.domain.ServiceVO;
 import com.atguigu.jxc.entity.SaleListGoods;
 import com.atguigu.jxc.service.SaleListGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,19 @@ public class SaleListGoodsController {
         map.put("rows",list);
         return map;
     }
+
+    /**
+     * 删除销售单 ,   涉及两张表, t_sale_list, t_sale_list_goods
+     *
+     * @param saleListId 出售id列表
+     * @return {@link ServiceVO}
+     */
+    @PostMapping("delete")
+    public ServiceVO DeleteSaleListAndGoods(@RequestParam("saleListId") Integer saleListId){
+        saleListGoodsService.DeleteSaleListAndGoods(saleListId);
+        return ServiceVO.success(null);
+
+    }
+
+
 }

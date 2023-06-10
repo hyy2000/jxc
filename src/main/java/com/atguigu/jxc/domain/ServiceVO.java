@@ -3,6 +3,7 @@ package com.atguigu.jxc.domain;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Stack;
 
 /**
  * @description 后端返回的实体
@@ -27,4 +28,7 @@ public class ServiceVO<T> implements Serializable {
         this.info = info;
     }
 
+    public static <T> ServiceVO<T> success(T info) {
+        return new ServiceVO<T>(100, "请求成功", info);
+    }
 }
