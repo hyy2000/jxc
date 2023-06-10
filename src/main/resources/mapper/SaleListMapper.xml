@@ -6,4 +6,7 @@
 <mapper namespace="com.atguigu.jxc.dao.SaleListDao">
 
 
+    <delete id="deleteBySaleListId">
+        DELETE FROM t_sale_list WHERE sale_list_id = #{saleListId}
+    </delete>
 </mapper>

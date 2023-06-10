@@ -37,9 +37,9 @@ public class SaleListGoodsController {
      * @param saleListId 出售id列表
      * @return {@link ServiceVO}
      */
-    @PostMapping("delete")
+    @PostMapping("/delete")
     public ServiceVO DeleteSaleListAndGoods(@RequestParam("saleListId") Integer saleListId){
-        saleListGoodsService.DeleteSaleListAndGoods(saleListId);
+        saleListGoodsService.deleteBySaleListId(saleListId);
         return ServiceVO.success(null);
 
     }
