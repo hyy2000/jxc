@@ -2,7 +2,9 @@ package com.atguigu.jxc.service;
 
 import com.atguigu.jxc.entity.SaleListGoods;
 
+import java.util.List;
+
 public interface SaleListGoodsService {
 
-    SaleListGoods saleListGood(Integer saleListId);
+    List<SaleListGoods> goodsList(Integer saleListId);
 }

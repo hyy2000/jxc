@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -17,14 +18,15 @@ public class SaleListGoodsController {
 
     /**
      * 销售单商品信息
-     * @param saleListId 出售id列表
+     * @param saleListId 销售id列表
+     * t_sale_list_goods里面有sale_list_id字段
      * @return {@link Map}<{@link String} , {@link SaleListGoods}>
      */
     @PostMapping("/goodsList")
-    public Map<String , SaleListGoods>  saleListGood(@RequestParam("saleListId") Integer saleListId){
-        SaleListGoods saleListGoods = saleListGoodsService.saleListGood(saleListId);
-        HashMap<String, SaleListGoods> map = new HashMap<>();
-        map.put("rows",saleListGoods);
+    public Map<String , Object>  saleListGood(@RequestParam("saleListId") Integer saleListId){
+        List<SaleListGoods> list = saleListGoodsService.goodsList(saleListId);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("rows",list);
         return map;
     }
 }

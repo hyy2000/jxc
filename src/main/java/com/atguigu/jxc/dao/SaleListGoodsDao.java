@@ -3,7 +3,9 @@ package com.atguigu.jxc.dao;
 import com.atguigu.jxc.entity.Goods;
 import com.atguigu.jxc.entity.SaleListGoods;
 
+import java.util.List;
+
 public interface SaleListGoodsDao {
 
-    SaleListGoods goodInfo(Integer saleListId);
+    List<SaleListGoods> goodsList(Integer saleListId);
 }

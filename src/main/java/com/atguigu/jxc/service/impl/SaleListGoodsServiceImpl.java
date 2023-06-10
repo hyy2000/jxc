@@ -8,6 +8,8 @@ import com.atguigu.jxc.service.SaleListGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SaleListGoodsServiceImpl implements SaleListGoodsService {
 
@@ -15,8 +17,8 @@ public class SaleListGoodsServiceImpl implements SaleListGoodsService {
     private SaleListGoodsDao saleListGoodsDao;
 
     @Override
-    public SaleListGoods saleListGood(Integer saleListId) {
-        return saleListGoodsDao.goodInfo(saleListId);
+    public List<SaleListGoods> goodsList(Integer saleListId) {
+        return saleListGoodsDao.goodsList(saleListId);
     }
 
 
