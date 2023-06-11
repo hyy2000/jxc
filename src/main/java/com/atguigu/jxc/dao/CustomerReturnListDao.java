@@ -1,10 +1,11 @@
-package com.atguigu.jxc.service;
+package com.atguigu.jxc.dao;
 
 import com.atguigu.jxc.dto.CustomerReturnListGoodsDTO;
 import com.atguigu.jxc.entity.CustomerReturnList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-public interface CustomerReturnListGoodsService {
+public interface CustomerReturnListDao {
     List<CustomerReturnList> getList(CustomerReturnListGoodsDTO customerReturnListGoodsDTO);
 }

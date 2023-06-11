@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.jxc.dao.CustomerReturnListDao">
+
+
+    <select id="getList" resultType="com.atguigu.jxc.entity.CustomerReturnList">
+        SELECT tcrl.*, tc.customer_name, tu.true_name
+        FROM t_customer_return_list tcrl
+        LEFT JOIN t_customer tc
+        ON tcrl.customer_id = tc.customer_id
+        LEFT JOIN t_user tu
+        ON tcrl.user_id = tu.user_id
+        <where>
+            <if test="returnNumber != null">
+                tcrl.returnNumber=#{returnNumber}
+            </if>
+            <if test="customerId != null">
+                AND tcrl.customerId like #{customerId}
+            </if>
+            <if test="state != null">
+                AND tcrl.state like #{state}
+            </if>
+            <if test="sTime != null">
+                AND tcrl.sTime like #{sTime}
+            </if>
+            <if test="eTime != null">
+                AND tcrl.eTime like #{eTime}
+            </if>
+        </where>
+
+    </select>
+</mapper>
