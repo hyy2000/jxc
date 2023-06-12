@@ -21,13 +21,6 @@ public class CustomerReturnListGoodsController {
 
 
     /**
-     * {
-     * 	"timestamp": "2023-06-11T15:18:35.464+0000",
-     * 	"status": 500,
-     * 	"error": "Internal Server Error",
-     * 	"message": "nested exception is org.apache.ibatis.binding.BindingException: Parameter 'returnNumber' not found. Available parameters are [crlDto, param1]",
-     * 	"path": "/customerReturnListGoods/list"
-     * }
      * 客户退货单查询（可查询条件：退货单号、客户、退款状态）
      * @param customerReturnListGoodsDTO
      * @return
