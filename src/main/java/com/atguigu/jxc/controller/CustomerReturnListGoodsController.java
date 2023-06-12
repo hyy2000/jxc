@@ -66,7 +66,7 @@ public class CustomerReturnListGoodsController {
      * @return {@link ServiceVO}<{@link Object}>
      */
     @PostMapping("/delete")
-    public ServiceVO<Object> delete(Integer customerReturnListId){
+    public ServiceVO<Object> delete(@RequestParam Integer customerReturnListId){
         customerReturnListGoodsService.delete(customerReturnListId);
         return ServiceVO.success(null);
     }
