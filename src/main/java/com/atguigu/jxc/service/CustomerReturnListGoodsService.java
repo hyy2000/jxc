@@ -10,4 +10,6 @@ public interface CustomerReturnListGoodsService {
     List<CustomerReturnList> getList(CustomerReturnListGoodsDTO customerReturnListGoodsDTO);
 
     List<CustomerReturnListGoods> goodsListInfo(Integer customerReturnListId);
+
+    void delete(Integer customerReturnListId);
 }

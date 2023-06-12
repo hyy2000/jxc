@@ -21,6 +21,15 @@ public class CustomerReturnListGoodsImpl implements CustomerReturnListGoodsServi
     @Autowired
     private CustomerReturnListGoodsDao customerReturnListGoodsDao;
 
+//    * 删除退货单
+//     * t_customer_return_list
+//     * t_customer_return_list_goods
+    @Override
+    public void delete(Integer customerReturnListId) {
+        customerReturnListDao.delete(customerReturnListId);
+        customerReturnListGoodsDao.delete(customerReturnListId);
+    }
+
     @Override
     public List<CustomerReturnListGoods> goodsListInfo(Integer customerReturnListId) {
         return customerReturnListGoodsDao.goodsListInfo(customerReturnListId);

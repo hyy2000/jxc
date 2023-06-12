@@ -8,4 +8,6 @@ import java.util.List;
 
 public interface CustomerReturnListDao {
     List<CustomerReturnList> getList(CustomerReturnListGoodsDTO customerReturnListGoodsDTO);
+
+    void delete(Integer customerReturnListId);
 }
