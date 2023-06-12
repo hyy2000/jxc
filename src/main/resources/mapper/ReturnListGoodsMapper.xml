@@ -6,5 +6,23 @@
 <mapper namespace="com.atguigu.jxc.dao.ReturnListGoodsDao">
 
 
+    <select id="count" resultType="java.util.Map">
+        SELECT
+            trl.return_number number,
+            trl.return_date date,
+ts.supplier_name supplierName,
+trlg.goods_code code ,
+trlg.goods_name name,
+trlg.goods_model model,
+tgt.goods_type_name goodsType,
+trlg.goods_unit unit,
+trlg.goods_num num,
+trlg.total total
 
+
+        FROM t_return_list trl
+            LEFT JOIN t_return_list_goods trlg ON trl.return_list_id = trlg.return_list_id
+            LEFT JOIN t_supplier ts ON trl.supplier_id = ts.supplier_id
+            LEFT JOIN t_goods_type tgt ON tgt.goods_type_id = trlg.goods_type_id
+    </select>
 </mapper>

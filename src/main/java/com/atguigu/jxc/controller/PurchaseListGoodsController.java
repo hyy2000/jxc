@@ -39,6 +39,7 @@ public class PurchaseListGoodsController {
      * @param purchaseListGoodsDTO 购买商品列表dto
      * @return {@link List}<{@link Map}<{@link String},{@link Object}>>
      */
+    //TODO 条件查询
     @PostMapping("/count")
     public List<Map<String,Object>> purchaseList(PurchaseListGoodsDTO purchaseListGoodsDTO){
         List<Map<String,Object>> list = purchaseListGoodsService.purchaseList(purchaseListGoodsDTO);
