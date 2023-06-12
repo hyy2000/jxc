@@ -18,7 +18,7 @@
     <select id="purchaseList" resultType="java.util.HashMap" >
         SELECT tpl.purchase_number number,
                tpl.purchase_date date,
-                ts.supplier_name,
+                ts.supplier_name supplierName,
                 tplg.goods_code code,
                 tplg.goods_name name,
                 tplg.goods_model model,

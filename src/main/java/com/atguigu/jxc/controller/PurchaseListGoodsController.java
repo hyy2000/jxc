@@ -33,6 +33,12 @@ public class PurchaseListGoodsController {
         return ServiceVO.success(null);
     }
 
+    /**
+     * 进货统计（可根据 商品类别、商品编码或名称 条件查询）
+     *
+     * @param purchaseListGoodsDTO 购买商品列表dto
+     * @return {@link List}<{@link Map}<{@link String},{@link Object}>>
+     */
     @PostMapping("/count")
     public List<Map<String,Object>> purchaseList(PurchaseListGoodsDTO purchaseListGoodsDTO){
         List<Map<String,Object>> list = purchaseListGoodsService.purchaseList(purchaseListGoodsDTO);
