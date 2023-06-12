@@ -31,6 +31,7 @@ public class SaleListGoodsController {
         return map;
     }
 
+
     /**
      * 删除销售单 ,   涉及两张表, t_sale_list, t_sale_list_goods
      *
@@ -42,6 +43,12 @@ public class SaleListGoodsController {
         saleListGoodsService.deleteBySaleListId(saleListId);
         return ServiceVO.success(null);
 
+    }
+
+    @PostMapping("/updateState")
+    public ServiceVO updateState(@RequestParam Integer saleListId){
+        saleListGoodsService.updateState(saleListId);
+        return ServiceVO.success(null);
     }
 
 

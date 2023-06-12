@@ -16,4 +16,6 @@ public interface SaleListGoodsService {
     List<SaleListGoods> goodsList(Integer saleListId);
 
     void deleteBySaleListId(Integer saleListId);
+
+    void updateState(Integer saleListId);
 }

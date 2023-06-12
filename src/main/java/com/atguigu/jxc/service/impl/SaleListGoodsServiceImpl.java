@@ -20,6 +20,11 @@ public class SaleListGoodsServiceImpl implements SaleListGoodsService {
     @Autowired
     private SaleListDao saleListDao;
 
+    @Override
+    public void updateState(Integer saleListId) {
+        saleListDao.updateState(saleListId);
+    }
+
     /**
      * 要操作两张表 t_sale_list, t_sale_list_goods
      *
