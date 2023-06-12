@@ -45,12 +45,20 @@ public class SaleListGoodsController {
 
     }
 
+    /**
+     * 支付结算（修改销售单付款状态）
+     *
+     * @param saleListId 出售id列表
+     * @return {@link ServiceVO}
+     */
     @PostMapping("/updateState")
     public ServiceVO updateState(@RequestParam Integer saleListId){
         saleListGoodsService.updateState(saleListId);
         return ServiceVO.success(null);
     }
 
+
+    //TODO
     @PostMapping("/count")
     public List<Map<String,Object>> Count(String sTime, String eTime ,Integer goodsTypeId, String codeOrName){
         return saleListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);

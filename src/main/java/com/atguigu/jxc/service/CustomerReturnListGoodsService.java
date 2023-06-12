@@ -5,6 +5,7 @@ import com.atguigu.jxc.entity.CustomerReturnList;
 import com.atguigu.jxc.entity.CustomerReturnListGoods;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CustomerReturnListGoodsService {
     List<CustomerReturnList> getList(CustomerReturnListGoodsDTO customerReturnListGoodsDTO);
@@ -12,4 +13,6 @@ public interface CustomerReturnListGoodsService {
     List<CustomerReturnListGoods> goodsListInfo(Integer customerReturnListId);
 
     void delete(Integer customerReturnListId);
+
+    List<Map<String, Object>> count(String sTime, String eTime, Integer goodsTypeId, String codeOrName);
 }

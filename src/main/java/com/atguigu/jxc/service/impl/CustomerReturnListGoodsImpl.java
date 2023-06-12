@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerReturnListGoodsImpl implements CustomerReturnListGoodsService {
@@ -21,7 +22,12 @@ public class CustomerReturnListGoodsImpl implements CustomerReturnListGoodsServi
     @Autowired
     private CustomerReturnListGoodsDao customerReturnListGoodsDao;
 
-//    * 删除退货单
+    @Override
+    public List<Map<String, Object>> count(String sTime, String eTime, Integer goodsTypeId, String codeOrName) {
+        return customerReturnListGoodsDao.count(sTime,eTime,goodsTypeId,codeOrName);
+    }
+
+    //    * 删除退货单
 //     * t_customer_return_list
 //     * t_customer_return_list_goods
     @Override

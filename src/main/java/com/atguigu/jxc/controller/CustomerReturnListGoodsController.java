@@ -64,4 +64,9 @@ public class CustomerReturnListGoodsController {
         return ServiceVO.success(null);
     }
 
+    @PostMapping("/count")
+    public List<Map<String,Object>> count(String sTime, String eTime, Integer goodsTypeId, String codeOrName){
+        return customerReturnListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);
+    }
+
 }

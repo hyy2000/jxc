@@ -12,4 +12,8 @@
     <select id="goodsListInfo" resultType="com.atguigu.jxc.entity.CustomerReturnListGoods">
         SELECT * FROM t_customer_return_list_goods WHERE customer_return_list_id=#{customerReturnListId}
     </select>
+
+    <select id="count" resultType="java.util.Map">
+
+    </select>
 </mapper>
