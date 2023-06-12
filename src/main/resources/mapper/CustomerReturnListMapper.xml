@@ -14,20 +14,20 @@
         LEFT JOIN t_user tu
         ON tcrl.user_id = tu.user_id
         <where>
-            <if test="returnNumber != null">
-                tcrl.returnNumber=#{returnNumber}
+            <if test="returnNumber != null and returnNumber != '' ">
+                tcrl.return_number = #{returnNumber}
             </if>
-            <if test="customerId != null">
-                AND tcrl.customerId like #{customerId}
+            <if test="customerId != null and customerId != '' ">
+                AND tcrl.customer_id = #{customerId}
             </if>
             <if test="state != null">
-                AND tcrl.state like #{state}
+                AND tcrl.state = #{state}
             </if>
             <if test="sTime != null">
-                AND tcrl.sTime like #{sTime}
+                AND  tcrl.return_date >= #{sTime}
             </if>
             <if test="eTime != null">
-                AND tcrl.eTime like #{eTime}
+                AND tcrl.return_date &lt;=  #{eTime}
             </if>
         </where>
 

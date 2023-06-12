@@ -26,11 +26,12 @@ public class CustomerReturnListGoodsController {
      * 	"message": "nested exception is org.apache.ibatis.binding.BindingException: Parameter 'returnNumber' not found. Available parameters are [crlDto, param1]",
      * 	"path": "/customerReturnListGoods/list"
      * }
+     * 客户退货单查询（可查询条件：退货单号、客户、退款状态）
      * @param customerReturnListGoodsDTO
      * @return
      */
     @PostMapping("/list")
-    public Map<String, Object> saleListGood(@RequestBody(required = false) CustomerReturnListGoodsDTO customerReturnListGoodsDTO) {
+    public Map<String, Object> saleListGood(CustomerReturnListGoodsDTO customerReturnListGoodsDTO) {
         List<CustomerReturnList> list = customerReturnListGoodsService.getList(customerReturnListGoodsDTO);
 
         //构建返回值
@@ -38,5 +39,10 @@ public class CustomerReturnListGoodsController {
         map.put("rows", list);
         return map;
     }
+
+//    @PostMapping(value = "/goodsList")
+//    public Map<String,Object> goodsListInfo(@RequestParam Integer customerReturnListId){
+//        customerReturnListGoodsService.goodsListInfo(customerReturnListId);
+//    }
 
 }
