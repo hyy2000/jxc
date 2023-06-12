@@ -18,4 +18,6 @@ public interface SaleListGoodsService {
     void deleteBySaleListId(Integer saleListId);
 
     void updateState(Integer saleListId);
+
+    List<Map<String, Object>> count(String sTime, String eTime, Integer goodsTypeId, String codeOrName);
 }

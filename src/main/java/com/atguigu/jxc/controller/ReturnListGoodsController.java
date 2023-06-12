@@ -21,9 +21,17 @@ public class ReturnListGoodsController {
         return null;
     }
 
+    /**
+     * 退货统计（可根据 商品类别、商品编码或名称 条件查询）
+     * @param sTime       年代时间
+     * @param eTime       e时间
+     * @param goodsTypeId 商品id类型
+     * @param codeOrName  代码或名称
+     * @return {@link List}<{@link Map}<{@link String},{@link Object}>>
+     */
+    //TODO 条件查询
     @PostMapping("/count")
     public List<Map<String,Object>> count(String sTime, String eTime ,Integer goodsTypeId, String codeOrName){
-        List<Map<String,Object>> list = returnListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);
-        return list;
+        return returnListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);
     }
 }

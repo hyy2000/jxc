@@ -51,5 +51,10 @@ public class SaleListGoodsController {
         return ServiceVO.success(null);
     }
 
+    @PostMapping("/count")
+    public List<Map<String,Object>> Count(String sTime, String eTime ,Integer goodsTypeId, String codeOrName){
+        return saleListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);
+    }
+
 
 }

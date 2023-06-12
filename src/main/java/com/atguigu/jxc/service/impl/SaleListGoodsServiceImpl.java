@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SaleListGoodsServiceImpl implements SaleListGoodsService {
@@ -19,6 +20,11 @@ public class SaleListGoodsServiceImpl implements SaleListGoodsService {
 
     @Autowired
     private SaleListDao saleListDao;
+
+    @Override
+    public List<Map<String, Object>> count(String sTime, String eTime, Integer goodsTypeId, String codeOrName) {
+        return saleListGoodsDao.count(sTime,eTime,goodsTypeId,codeOrName);
+    }
 
     @Override
     public void updateState(Integer saleListId) {
