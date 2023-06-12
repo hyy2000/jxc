@@ -5,9 +5,35 @@
 
 <mapper namespace="com.atguigu.jxc.dao.PurchaseListGoodsDao">
 
-    <update id="updateState">
+    <resultMap id="BaseResultMap" type="com.atguigu.jxc.entity.User">
+    </resultMap>
+
+    <update id="updateState" >
         UPDATE t_purchase_list
         SET t_purchase_list.state=2
         WHERE t_purchase_list.purchase_list_id = #{purchaseListId}
     </update>
+
+
+    <select id="purchaseList" resultType="java.util.HashMap" >
+        SELECT tpl.purchase_number number,
+               tpl.purchase_date date,
+                ts.supplier_name,
+                tplg.goods_code code,
+                tplg.goods_name name,
+                tplg.goods_model model,
+                tgt.goods_type_name goodsType,
+                tplg.goods_unit unit,
+                tplg.price price,
+                tplg.goods_num num,
+                tplg.total total
+
+        FROM t_purchase_list tpl
+            LEFT JOIN t_supplier ts
+        ON tpl.supplier_id=ts.supplier_id
+            LEFT JOIN t_purchase_list_goods tplg ON tpl.purchase_list_id=tplg.purchase_list_id
+            LEFT JOIN t_goods_type tgt ON tplg.goods_type_id=tgt.goods_type_id
+
+
+    </select>
 </mapper>
