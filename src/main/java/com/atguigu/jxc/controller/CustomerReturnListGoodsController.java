@@ -2,6 +2,7 @@ package com.atguigu.jxc.controller;
 
 import com.atguigu.jxc.dto.CustomerReturnListGoodsDTO;
 import com.atguigu.jxc.entity.CustomerReturnList;
+import com.atguigu.jxc.entity.CustomerReturnListGoods;
 import com.atguigu.jxc.service.CustomerReturnListGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,9 +41,13 @@ public class CustomerReturnListGoodsController {
         return map;
     }
 
-//    @PostMapping(value = "/goodsList")
-//    public Map<String,Object> goodsListInfo(@RequestParam Integer customerReturnListId){
-//        customerReturnListGoodsService.goodsListInfo(customerReturnListId);
-//    }
+    @PostMapping(value = "/goodsList")
+    public Map<String,Object> goodsListInfo(@RequestParam Integer customerReturnListId){
+        List<CustomerReturnListGoods> list =  customerReturnListGoodsService.goodsListInfo(customerReturnListId);
+        //构建返回值
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("rows", list);
+        return map;
+    }
 
 }

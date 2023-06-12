@@ -2,9 +2,11 @@ package com.atguigu.jxc.service.impl;
 
 import com.atguigu.jxc.dao.CustomerDao;
 import com.atguigu.jxc.dao.CustomerReturnListDao;
+import com.atguigu.jxc.dao.CustomerReturnListGoodsDao;
 import com.atguigu.jxc.dao.UserDao;
 import com.atguigu.jxc.dto.CustomerReturnListGoodsDTO;
 import com.atguigu.jxc.entity.CustomerReturnList;
+import com.atguigu.jxc.entity.CustomerReturnListGoods;
 import com.atguigu.jxc.service.CustomerReturnListGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,14 @@ public class CustomerReturnListGoodsImpl implements CustomerReturnListGoodsServi
 
     @Autowired
     private CustomerReturnListDao customerReturnListDao;
+    @Autowired
+    private CustomerReturnListGoodsDao customerReturnListGoodsDao;
+
+    @Override
+    public List<CustomerReturnListGoods> goodsListInfo(Integer customerReturnListId) {
+        return customerReturnListGoodsDao.goodsListInfo(customerReturnListId);
+    }
+
 
     /**
      * 涉及三张表:t_customer_return_list  t_customer  t_user
