@@ -19,32 +19,32 @@
 
     <select id="count" resultType="java.util.Map">
         SELECT tcrl.return_number number,
-               tcrl.return_date date,
-                tc.customer_name customerName,
-                tcrlg.goods_code code,
-                tcrlg.goods_name name,
-                tcrlg.goods_model model,
-                tgt.goods_type_name goodsType,
-                tcrlg.goods_unit unit,
-                tcrlg.price price,
-                tcrlg.goods_num num,
-                tcrlg.total total
+        tcrl.return_date date,
+        tc.customer_name customerName,
+        tcrlg.goods_code code,
+        tcrlg.goods_name name,
+        tcrlg.goods_model model,
+        tgt.goods_type_name goodsType,
+        tcrlg.goods_unit unit,
+        tcrlg.price price,
+        tcrlg.goods_num num,
+        tcrlg.total total
 
         FROM t_customer_return_list tcrl
-            LEFT JOIN t_customer tc
+        LEFT JOIN t_customer tc
         ON tcrl.customer_id= tc.customer_id
-            LEFT JOIN t_customer_return_list_goods tcrlg ON tcrl.customer_return_list_id=tcrlg.customer_return_list_id
-            LEFT JOIN t_goods_type tgt ON tcrlg.goods_type_id=tgt.goods_type_id
+        LEFT JOIN t_customer_return_list_goods tcrlg ON tcrl.customer_return_list_id=tcrlg.customer_return_list_id
+        LEFT JOIN t_goods_type tgt ON tcrlg.goods_type_id=tgt.goods_type_id
 
         <where>
             <if test="goodsTypeId != null and goodsTypeId != '' ">
-               tcrlg.goods_type_id = #{goodsTypeId}
+                tcrlg.goods_type_id = #{goodsTypeId}
             </if>
             <if test="sTime != null and sTime != '' ">
                 AND tcrl.return_date >= #{sTime}
             </if>
             <if test="eTime != null and eTime != '' ">
-                AND  tcrl.return_date &lt;= #{eTime}
+                AND tcrl.return_date &lt;= #{eTime}
             </if>
             <if test="codeOrName != null and codeOrName != '' ">
                 AND tcrlg.goods_code like "%"#{codeOrName}"%"
