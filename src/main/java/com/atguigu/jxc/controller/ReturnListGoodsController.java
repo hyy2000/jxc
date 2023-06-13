@@ -32,6 +32,7 @@ public class ReturnListGoodsController {
     //TODO 条件查询
     @PostMapping("/count")
     public List<Map<String,Object>> count(String sTime, String eTime ,Integer goodsTypeId, String codeOrName){
-        return returnListGoodsService.count(sTime,eTime,goodsTypeId,codeOrName);
+        List<Map<String, Object>> list = returnListGoodsService.count(sTime, eTime, goodsTypeId, codeOrName);
+        return list;
     }
 }

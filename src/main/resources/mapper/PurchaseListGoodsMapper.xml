@@ -47,7 +47,7 @@
                 AND tplg.goods_code like "%"#{codeOrName}"%"
             </if>
             <if test="codeOrName != null and codeOrName != '' ">
-                AND tplg.goods_name like "%"#{codeOrName}"%"
+                or tplg.goods_name like "%"#{codeOrName}"%"
             </if>
         </where>
 

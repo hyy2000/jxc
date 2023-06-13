@@ -6,30 +6,55 @@
 <mapper namespace="com.atguigu.jxc.dao.SaleListGoodsDao">
 
     <delete id="deleteBySaleListId">
-        DELETE FROM t_sale_list_goods WHERE sale_list_id = #{saleListId}
+        DELETE
+        FROM t_sale_list_goods
+        WHERE sale_list_id = #{saleListId}
     </delete>
 
 
-    <select id="goodsList" resultType="com.atguigu.jxc.entity.SaleListGoods" >
-        SELECT * FROM `t_sale_list_goods` WHERE sale_list_goods_id= #{saleListId}
+    <select id="goodsList" resultType="com.atguigu.jxc.entity.SaleListGoods">
+        SELECT *
+        FROM `t_sale_list_goods`
+        WHERE sale_list_goods_id = #{saleListId}
     </select>
     <select id="count" resultType="java.util.Map">
-        SELECT
-            trl.return_number number,
-            trl.return_date date,
-ts.supplier_name supplierName,
-trlg.goods_code code ,
-trlg.goods_name name,
-trlg.goods_model model,
-tgt.goods_type_name goodsType,
-trlg.goods_unit unit,
-trlg.goods_num num,
-trlg.total total
+        SELECT tsl.sale_number number,
+        tsl.sale_date date,
+        tc.customer_name customerName,
+        tslg.goods_code code,
+        tslg.goods_name name,
+        tslg.goods_model model,
+        tgt.goods_type_name,
+        tslg.goods_unit unit,
+        tslg.price price,
+        tslg.goods_num num,
+        tslg.total total
 
+        FROM t_sale_list tsl
+        LEFT JOIN t_sale_list_goods tslg ON tsl.sale_list_id=tslg.sale_list_id
+        LEFT JOIN t_customer tc ON tsl.customer_id = tc.customer_id
 
-        FROM t_return_list trl
-            LEFT JOIN t_return_list_goods trlg ON trl.return_list_id = trlg.return_list_id
-            LEFT JOIN t_supplier ts ON trl.supplier_id = ts.supplier_id
-            LEFT JOIN t_goods_type tgt ON tgt.goods_type_id = trlg.goods_type_id
+        LEFT JOIN t_goods_type tgt ON tslg.goods_type_id=tgt.goods_type_id
+
+        <where>
+            <if test="goodsTypeId != null and goodsTypeId != '' ">
+                tslg.goods_type_id = #{goodsTypeId}
+            </if>
+            <if test="sTime != null and sTime != '' ">
+                AND tsl.sale_date >= #{sTime}
+            </if>
+            <if test="eTime != null and eTime != '' ">
+                AND tsl.sale_date &lt;= #{eTime}
+            </if>
+            <if test="codeOrName != null and codeOrName != '' ">
+                AND tslg.goods_code like "%"#{codeOrName}"%"
+            </if>
+            <if test="codeOrName != null and codeOrName != '' ">
+                or tslg.goods_name like "%"#{codeOrName}"%"
+            </if>
+        </where>
+
     </select>
+
+
 </mapper>
